@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answers</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="answerpagestyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body onload="typeWriter()">
+    <div class="main" ng-controller="myctrl" ng-init = displayanswers()>
+        <div class="container">
+            <div class="topicname">
+                <p class="quest">{{question}}</p>
+                <input class="newanswer" placeholder="Drop your answer here" ng-model="newanswerdisplay" required>
+                <p class="newans" ng-bind="newanswerdisplay"></p>
+                <button class ="newabut" ng-click="addnewanswer()">Submit</button>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="c2">
+                <div class="answ" ng-repeat="ans in answers">
+                    <p class="user" ng-click="openprofilepage(ans.user)">{{ans.user}}</p></a>
+                    <p class="aa" ng-click="toggleanswer($index)">
+                        {{ showFull[$index] ? ans.answer : (ans.answer | limitTo:100) + (showFull[$index] ? '' : '...') }}
+                    </p>
+                    <div class="likes">
+                        <p class="likes-btn" ng-init="displaylikes($index)" ng-class="{active: liked[$index]}" ng-click="toggleLike($index)">
+                            <i class="fa fa-thumbs-up"></i>
+                        </p><span id ="count">{{ans.likescount}}</span>
+                        <p class="dislikes-btn" ng-init="displaydislikes($index)" ng-class="{active: disliked[$index]}" ng-click="toggleDislike($index)">
+                            <i class="fa fa-thumbs-down"></i>
+                        </p><span id ="count">{{ans.dislikescount}}</span>
+                        
+                    </div>
+                    <hr class="linebreak">
+                </div>
+            </div>
+            <div class="othertopics">
+                <p id ="quote" class="quote a1 typing-animate"> </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var i = 0;
+        var txt = 'Each answer shared becomes a building block, shaping the architecture of collective knowledge'
+        var speed = 50;
+        
+        function typeWriter() {
+          if (i < txt.length) {
+            document.getElementById("quote").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+          }
+        }
+        </script>
+    <script src="answerspage.js"></script>
+</body>
+</html>

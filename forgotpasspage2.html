@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div ng-controller = "myctrl4" class="otppass">
+        <div class="otp">
+            <form ng-submit="updatepass()">
+                <input type="password" id="otp" ng-model="otp" placeholder="Password">
+                <input type="password" id="otp" ng-model="otp" placeholder="Confirm password">
+            <button type="submit" id="otpgen" ng-model="otpgen">Generate OTP</button>
+            <p class="disotp"></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background-image: url(bgfordl.jpg);
+    backdrop-filter: blur(8px);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+}
+
+.heading
+{
+    margin:20px;
+    font-size: 120px;
+    color: white;
+    padding: 20px;
+    font-family:'Times New Roman';
+}
+
+.container{
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 50px 50px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width:770px;
+    max-width: 100%;
+    height:468px;
+
+}
+
+.container p{
+    font-size: 15px;
+    line-height : 20px;
+    letter-spacing: 0.3px;
+    padding: 15px;
+
+}
+.container span{
+    font-size: 12px;
+    padding: 20px
+
+}
+
+.container a{
+    color:lightgrey;
+    font-size: 13px;
+    margin: 10px 10px;
+}
+
+.container a:hover{
+    color: blueviolet;
+}
+
+.container button{
+    background-color: yellow;
+    color: black;
+    font-size : 12px;
+    padding : 10px 0px;
+    border : 3px solid thick;
+    transform: skew(
+        -20deg
+    );
+    text-transform:uppercase;
+    font-weight: 600;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); 
+    cursor: pointer;
+    margin:10px 100px;
+    width: 150px;
+}
+
+.container button.hidden{
+    background-color: transparent;
+    border-color: white;
+    color:white;
+    
+}
+
+.container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+    height: 100%;
+}
+
+.container input{
+    background-color: rgb(242, 238, 238);
+    border: none;
+    border-radius: 10px;
+    margin: 10px 30px;
+    font-size: 13px;
+    padding : 10px 15px;
+    outline: none;
+}
+
+
+.form-container{
+    position: absolute;
+    top:0;
+    height:100%;
+    transition : all 0.6s ease-in-out ;
+}
+
+.sign-in{
+    left:0;
+    width:50%;
+    z-index:2;
+}
+
+.container.active .sign-in{
+    transform: translateX(100%);
+    opacity:0
+
+}
+
+.sign-up{
+    left:0;
+    width:50%;
+    z-index:1;
+    opacity: 0;
+}
+
+
+.container.active .sign-up{
+    transform: translateX(100%);
+    opacity:1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0% , 49.99%{
+        opacity : 0;
+        z-index:1
+    }
+    50% , 100%{
+        opacity : 1;
+        z-index:5
+    }
+}
+
+.toggle-container{
+    position : absolute;
+    top:0;
+    left:50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 150px 0px 0px 150px;
+    transition: all 0.6s ease-in-out;
+    z-index:1000;
+}
+
+.container.active .toggle-container{
+    transform: translateX(-100%);
+    border-radius: 0px 150px 150px 0px;
+}
+
+.toggle{
+    color: white;
+    background: linear-gradient(to bottom right , lightgrey, black);
+    height: 100%;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width:200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle{
+    transform: translateX(50%);
+}
+
+.toggle-panel{
+    position: absolute;
+    width:50%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 30px;
+    text-align: center;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+ .toggle-left{
+    transform: translateX(0);
+}
+
+.container.active .toggle-left{
+    transform: translateX(0);
+} 
+
+.toggle-right{
+    right:0;
+    transform: translateX(0); 
+}
+
+.container.active .toggle-right{
+    transform: translateX(0);
+} 
+
+.displayerror{
+    margin-bottom: 10px;
+    color:red;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.displayerror2{
+    color:red;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+

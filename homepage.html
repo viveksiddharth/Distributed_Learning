@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href = "page1style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src = 'bgfordllogo.jpg' id="logo">
+        <nav>
+            <a href="#main">Main</a>
+            <a href="#topics">Topics</a>
+            <a href="#recentquestions">Recent Questions</a>
+            <a href="#Profile">Profile</a>
+            <button>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+<div class="mainclass" id="mainclass">
+    <div class="slides" id="main">
+        <h> Empowering Minds, Unleashing Potential: Our Distributed Learning, Your Infinite Growth.</h1>
+    </div>
+    <div class="slides topics" id="topics" ng-controller = "myCtrl">
+        <h> Topics</h>
+            <input class = topicsearch  type="text" ng-model="search" placeholder="Search">
+            
+            <div class="container">
+              <div class="form-container" ng-repeat="container in containers | filter:search">
+                <h1>{{container.name}}</h1>
+                <p>{{container.description}}</p>
+                <button ng-click="enter(container.name)">Enter</button>
+              </div>
+            </div>
+          </div>
+          
+          
+        <div class="slides recentquestions" id="recentquestions">
+            <div class="rchead">
+                <h class="rc">
+                    Recent Questions
+                </h>
+            </div>
+            <div class="rcdata" ng-controller = "myctrl3" ng-init = display8()>
+                <div class="quesi" ng-repeat="ques in questions | filter:search">
+                    <p class="user" ng-click="openprofilepage(ques.user)">{{ques.user}}</p></a>
+                    <p class="qq" ng-click="toggleQuestion($index)">
+                        {{ showFull[$index] ? ques.question : (ques.question | limitTo:200) + (showFull[$index] ? '' : '...') }}
+                    </p>
+                    <button class="ans" ng-click="displayanswers(ques.qid)">Answers({{ques.answers}})</button>
+                    <hr class="linebreak">
+                </div>
+
+            </div>
+    </div>
+        <div ng-init="display()" ng-controller = "myctrl2" class="slides profile" id="Profile">
+            <h>
+                Profile
+            </h>
+
+            <div class="personal">
+                <div class=" det rollno">
+                    <p class="labels">Rollno</p>
+                    <p class="data">{{rollno1}}</p>
+                </div>
+                <hr>
+                <div class="det name">
+                    <p class="labels">Name</p>
+                    <p class="data">{{name1}}</p>
+                </div>
+                <hr>
+                <div class="det email">
+                    <p class="labels">Email <i class="fa fa-envelope"></i></p>
+                    <p class="data">{{email1}}</p>
+                </div>
+            </div>
+            <div class="work">
+                <div class="det2 questions">
+                    <p class="labels2"> Questions Posted</p>
+                    <p class="data2">{{queslen}}</p>
+                </div>
+                <hr class="linebreak">
+                <div class="det2 answers">
+                    <p class="labels2"> Answers Posted</p>
+                    <p class="data2">{{anslen}}</p>
+                </div>
+                <hr>
+                <div class="det2 coins">
+                    <p class="labels2"> Coins earned</p>
+                    <p class="data2 coins"><i class="fa-solid fa-coins" style="color:yellow"></i>{{coins}}</p>
+                </div>
+            </div>
+    
+        
+        </div>
+</div>
+<script src="page1script.js"></script>
+</body>
+</html>
+
+
+
+

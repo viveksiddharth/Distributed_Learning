@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="questionpagestyle.css">
+</head>
+<body onload="typeWriter()" >
+    <div class="main" ng-controller="myctrl" ng-init = displayquestion()>
+        <div class="container">
+            <div class="topicname">
+                <p id="mainheading" class="mainheading">{{Sampletopic}}</p>
+                <p id="des" class="des">{{description}}</p>
+                <input class="newquestion" placeholder="Drop your question here" ng-model="newquestiondisplay" required>
+                <p class="newqd" ng-bind="newquestiondisplay"></p>
+                <button class ="newqbut" ng-click="addnewquestion()">Submit</button>
+            </div>
+            <div class="c2">
+                <input class="questionsearch" type="text" ng-model="search" placeholder="Search your question">
+                <div class="quesi" ng-repeat="ques in questions | filter:search">
+                    <p class="user" ng-click="openprofilepage(ques.user)">{{ques.user}}</p></a>
+                    <p class="qq" ng-click="toggleQuestion($index)">
+                        {{ showFull[$index] ? ques.question : (ques.question | limitTo:200) + (showFull[$index] ? '' : '...') }}
+                    </p>
+                    <button class="ans" ng-click="displayanswers(ques.qid)">Answers({{ques.answers}})</button>
+                    <hr class="linebreak">
+                </div>
+            </div>
+            <div class="othertopics">
+                <p id="quote" class="quote q1"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var i = 0;
+        var txt = 'Questions are the keys that unlock doors to new understanding.'
+        var txt2 = ''
+        var speed = 50;
+        
+        function typeWriter() {
+          if (i < txt.length) {
+            document.getElementById("quote").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+          }
+        }
+
+
+        
+        </script>
+    <script src="questionspage.js"></script>
+</body>
+</html>

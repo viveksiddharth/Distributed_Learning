@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapploginpage">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="loginstyle.css">
+</head>
+<body>
+    <div class="heading">
+        <header>
+            Distributed learning
+        </header>
+    </div>
+    <div class="container" id="container">
+        <div ng-controller="myCtrl2" class="form-container sign-up">
+            <form ng-submit="verifyadduser()" id="signup-form"  method="post">
+                <h1>Create Account</h1>
+                <span>Enter the required details</span>
+                <input ng-model="toname" id="toname" type="text" placeholder="Name" name="toname">
+                <input ng-model="torollno2" id="torollno2" type="text" placeholder="Roll No" name="torollno2">
+                <input ng-model="toemail" id="toemail" type="email" placeholder="Email" name="toemail">
+                <input ng-model="topassword2" id="topassword2" type="password" placeholder="Password" name="topassword2">
+                <button type="submit" id="toregister" name="toregister">Sign up</button>
+                <div class="displayerror2" ng-show="message11"><p>{{message}}</p></div>
+                <p id="cookieforrollno" ng-show="cookierollno">{{cookierollno1}}</p>
+            </form>
+            
+        </div>
+
+        <div ng-controller="myCtrl" class="form-container sign-in"> 
+            <form ng-submit="verifyUser()" id="signin-form" method="post">
+                <h1>Sign in to your Account</h1>
+                <span>Enter the required details</span>
+                <input id="torollno" ng-model="torollno" type="text" placeholder="Roll No" name="torollno">
+                <input id="topassword" ng-model="topassword" type="password" placeholder="Password" name="topassword">
+                <a href="./forgotpasspage.html">Forget your password</a>
+                <button type="submit" id="tologin" name="tologin">Sign in</button>
+                <div class="displayerror" ng-show="message22" ><p>{{message2}}</p></div>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back to Distributed learning</h1>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Welcome to Distributed learning</h1>
+                    <p>Provide your personal details to Enjoy using this!</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var loginbtn = document.getElementById("login");
+        var registerbtn = document.getElementById("register");
+        
+        registerbtn.addEventListener('click', function() {
+            container.classList.add('active');
+        });
+        
+        loginbtn.addEventListener('click', function() {
+            container.classList.remove('active');
+        });
+    </script>
+
+    <script src="loginscript.js"></script>
+</body>
+</html>

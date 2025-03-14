@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="profileapp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+</head>
+<body>
+    <div class="main" ng-controller="myctrl1" ng-init="inprofile()">
+        <div class="personal">
+            <div class=" det rollno">
+                <p class="labels">Rollno</p>
+                <p class="data">{{rollno}}</p>
+            </div>
+            <hr>
+            <div class="det name">
+                <p class="labels">Name</p>
+                <p class="data">{{name}}</p>
+            </div>
+            <hr>
+            <div class="det email">
+                <p class="labels">Email <i class="fa fa-envelope"></i></p>
+                <p class="data">{{email}}</p>
+            </div>
+        </div>
+        <div class="work">
+            <div class="det2 questions">
+                <p class="labels2"> Questions Posted</p>
+                <p class="data2">{{queslen}}</p>
+            </div>
+            <hr class="linebreak">
+            <div class="det2 answers">
+                <p class="labels2"> Answers Posted</p>
+                <p class="data2">{{anslen}}</p>
+            </div>
+            <hr>
+            <div class="det2 coins">
+                <p class="labels2"> Coins earned</p>
+                <p class="data2"><i class="fa-solid fa-coins" style="color:yellow"></i>{{coins}}</p>
+            </div>
+        </div>
+    </div>
+    <script src="profile.js"></script>
+</body>
+</html>
